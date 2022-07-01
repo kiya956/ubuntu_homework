@@ -22,6 +22,7 @@ case "$1" in
 	if [ ! -e /usr/bin/tcsh ]; then
 	    ln -s /bin/tcsh /usr/bin/tcsh
 	fi
+        testing.sh
         update-alternatives \
                 --install /bin/csh csh /bin/tcsh 20 \
                 --slave /usr/share/man/man1/csh.1.gz csh.1.gz /usr/share/man/man1/tcsh.1.gz
