@@ -1,0 +1,15 @@
+**/Makefile
+!win32/msg/Makefile
+atconfig
+config.h
+config.status
+config_p.h
+ed.defns.h
+gethost
+nls/*.cat
+sh.err.h
+tc.const.h
+tc.defs.c
+tcsh
+tests/package.m4
+tests/testsuite

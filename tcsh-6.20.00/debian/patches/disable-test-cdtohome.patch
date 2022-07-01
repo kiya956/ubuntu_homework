@@ -1,0 +1,18 @@
+--- a/tests/variables.at
++++ b/tests/variables.at
+@@ -704,15 +704,6 @@
+ AT_CLEANUP
+ 
+ 
+-AT_SETUP([$ cdtohome])
+-AT_CHECK([tcsh -f -c 'cd'], 0)
+-AT_CLEANUP
+-AT_SETUP([$ noimplicithome])
+-AT_CHECK([tcsh -f -c 'unset cdtohome; cd'], 1, , [cd: Too few arguments.
+-])
+-AT_CLEANUP
+-
+-
+ VAR_UNSET([matchbeep])
+ VAR_UNSET([nobeep])
+ VAR_UNSET([noclobber]) # Functionality tested with "Command execution"

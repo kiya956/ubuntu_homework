@@ -1,0 +1,30 @@
+From: Lucas Nussbaum <lucas@debian.org>
+Description: Those tests fail when running the testsuite without a tty. Disabling them.
+
+--- a/tests/commands.at
++++ b/tests/commands.at
+@@ -1205,11 +1205,6 @@
+ AT_DATA([script.csh],
+ [[set var=$1
+ ]])
+-AT_CHECK([[tcsh -i -f -c 'source -h script.csh foo; history' \
+-	   | sed 's/	[^	]*	/ TIME /']], ,
+-[     1 TIME source -h script.csh foo ; history
+-     2 TIME set var=$1
+-])
+ 
+ AT_CHECK([tcsh -f -c 'source -h script.csh foo; echo $var'], 1, [],
+ [var: Undefined variable.
+--- a/tests/variables.at
++++ b/tests/variables.at
+@@ -343,10 +343,6 @@
+ 
+ AT_CHECK([if [ ! -t 0 ]; then exit 77; fi],, [Skipping $edit tests])
+ 
+-AT_CHECK([TERM=something tcsh -f -c 'echo $?edit'], ,
+-[1
+-])
+-
+ AT_CHECK([TERM=dumb tcsh -f -c 'echo $?edit'], ,
+ [0
+ ])

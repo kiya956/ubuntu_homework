@@ -1,0 +1,18 @@
+From: Aurelien Jarno <aurel32@debian.org>
+Description: This test wrongly assumes that $HOME and ~$(id -un) are the
+  the same directories and thus fails on the build daemons which use
+  HOME=/sbuild-nonexistent. Disable it.
+
+--- a/tests/subst.at
++++ b/tests/subst.at
+@@ -54,10 +54,6 @@
+ , [1
+ ])
+ 
+-AT_CHECK([echo "echo ~$(id -un)/foo; echo \"$HOME/foo\"" | tcsh -f | uniq dnl
+-	  | wc -l | tr -d ' \t'], , [1
+-])
+-
+ AT_CLEANUP
+ 
+ 

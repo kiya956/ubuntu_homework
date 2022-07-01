@@ -1,0 +1,7 @@
+lexical-test
+disable-test-cdtohome.patch
+01_build.2.patch
+01_build.3.patch
+disable-test-notty.patch
+disable-test-nice.patch
+disable-test-home.patch

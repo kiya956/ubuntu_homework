@@ -1,0 +1,876 @@
+tcsh (6.20.00-7) unstable; urgency=high
+
+  * postrm: remove symlink, not executable, Closes: #852117
+  * postinst: create symlink before calling update-alternatives,
+    Closes: #854659
+
+ -- Thomas Lange <lange@debian.org>  Thu, 09 Feb 2017 13:07:47 +0000
+
+tcsh (6.20.00-6) unstable; urgency=high
+
+  * postrm: move code for upgrade case, Closes: #854575
+
+ -- Thomas Lange <lange@debian.org>  Wed, 08 Feb 2017 21:53:19 +0000
+
+tcsh (6.20.00-5) unstable; urgency=low
+
+  * make piuparts happy, Closes: #852117
+
+ -- Thomas Lange <lange@debian.org>  Mon, 23 Jan 2017 22:48:05 +0100
+
+tcsh (6.20.00-4) unstable; urgency=high
+
+  * Fix FTCBFS: Support DEB_BUILD_OPTIONS=nocheck, thanks to Helmut Grohne
+
+ -- Thomas Lange <lange@debian.org>  Thu, 19 Jan 2017 13:57:48 +0000
+
+tcsh (6.20.00-3) unstable; urgency=high
+
+  * add patch to fix RC bug, Closes #851046
+
+ -- Thomas Lange <lange@debian.org>  Thu, 19 Jan 2017 11:23:08 +0100
+
+tcsh (6.20.00-2) unstable; urgency=high
+
+  * rules: put executable into /bin, make new symlink, Closes: #847139
+  * variables.at: disable cdtohome test
+
+ -- Thomas Lange <lange@debian.org>  Sun, 11 Dec 2016 18:51:28 +0000
+
+tcsh (6.20.00-1) unstable; urgency=low
+
+  * new upstream, Closes: #632892, #594154
+  * add emacs startup, Closes: #816772
+
+ -- Thomas Lange <lange@debian.org>  Sat, 03 Dec 2016 19:58:58 +0000
+
+tcsh (6.18.01-3) unstable; urgency=medium
+
+  * disable test, Closes: #760837
+  * control: update to standards version 3.9.5, no changes needed
+
+ -- Thomas Lange <lange@debian.org>  Tue, 09 Sep 2014 12:59:43 +0200
+
+tcsh (6.18.01-2) unstable; urgency=low
+
+  * add entry to /etc/shells Closes: #664485
+  * update to Standards-Version 3.9.3, no changes needed
+
+ -- Thomas Lange <lange@debian.org>  Thu, 21 Jun 2012 22:52:58 +0200
+
+tcsh (6.18.01-1) unstable; urgency=low
+
+  * new upstream version Closes: #645238
+  * rules: enable hardening options Closes: #644402
+  * control: update to 3.9.2, no changes needed, remove package versions
+    from build-depends
+  * patches/co-completion: remove -co* completion Closes: #628960
+  * watch: use passive mode for ftp
+
+ -- Thomas Lange <lange@debian.org>  Tue, 14 Feb 2012 14:05:09 +0100
+
+tcsh (6.17.06-2) unstable; urgency=medium
+
+  * readd disable-lexical.at-31.patch Closes: #635102
+
+ -- Thomas Lange <lange@debian.org>  Sat, 10 Sep 2011 00:55:25 +0200
+
+tcsh (6.17.06-1) unstable; urgency=low
+
+  * new upstream version
+  * Removed patches:
+    + 07_nls.patch
+    + fix-make-catalogs.patch
+    + disable-lexical.at-31.patch
+    + tcsh-6.17.02-multibyte.patch
+    + disable-broken-test.patch
+  * do not set $LINES and $LINES, this removes former git patch b063c65
+    Closes: #623330, #605279
+  * debian/csh.login: use full path for ls, fixing the script for people
+    with an aliased ls. Closes: #607828. LP: #70763
+  * README.Debian: add info about the bug tracker
+
+ -- Thomas Lange <lange@debian.org>  Thu, 21 Jul 2011 22:25:34 +0200
+
+tcsh (6.17.02-4) unstable; urgency=high
+
+  * new maintainer Closes: #592093
+  * add tcsh-6.17.02-multibyte.patch Closes: #603545
+
+ -- Thomas Lange <lange@debian.org>  Mon, 06 Dec 2010 17:41:17 +0100
+
+tcsh (6.17.02-3) unstable; urgency=low
+
+  * Re-add 12_unknown_lscolors.patch. Closes segfault when removed.
+    Closes: #592089.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Sat, 07 Aug 2010 10:08:06 -0400
+
+tcsh (6.17.02-2) unstable; urgency=low
+
+  * Set $COLUMNS and $LINES in csh.{cshrc,login}. Closes: #580498. LP: #546032
+  * Standards-Version bumped to 3.8.4. No changes needed.
+  * Upload to unstable.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 06 Aug 2010 15:22:42 -0400
+
+tcsh (6.17.02-1) experimental; urgency=low
+
+  * New upstream release.
+  * Merged patches:
+    + 01_build.1.patch
+    + 06_man.patch
+    + 10_hurd.patch
+  * Removed patches:
+    + 02_fix.patch - no longer needed
+    + 12_unknown_lscolors.patch - upstream says:
+        "rejected - will not apply now, I'd rather see the error and
+         fix $LS_COLORS than eat it up silently."
+  * Bug fixes:
+    + "Crash with autoexpand and no histchars" (LP: #96490)
+    + "tcsh history file fails to save commands with "!" properly" (LP: #139537)
+    + "tcsh's sending of HUPs to children is broken" (Closes: #314641)
+    + "tcsh doesn't support CR/LF end-of-lines in some cases, contrary to csh"
+      (Closes: #462346)
+    + "complete.tcsh bug in postmap" (Closes: #552632)
+  * Fix catalogs generation to use the charset
+  * Add disable-lexical.at-31.patch:
+    disable broken comments test
+  * Upload to experimental as it is a pre-release.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Tue, 18 May 2010 23:41:14 +0200
+
+tcsh (6.17.00-3) unstable; urgency=medium
+
+  * Add disable-test-nice.patch: disable test in commands.at that fails on the
+    buildd with "setpriority: Permission denied".
+  * Set urgency to medium: the package already got 6 days of testing in
+    experimental and 4 in unstable.
+  * Document all patches.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Fri, 12 Mar 2010 21:22:04 +0100
+
+tcsh (6.17.00-2) unstable; urgency=low
+
+  * Upload to unstable
+  * Change priority (agree with ftpmasters): standard->optional.
+  * Add Vcs-* control fields
+  * 11_j-prompt.dpatch: remove, no longer needed.
+  * 08_read.dpatch: removed, no longer needed.
+  * add disable-broken-test.patch: disable a test in lexical.at
+  * Run test suite, and cleanup after that
+  * disable-test-notty.patch: disable tests that fail when not running
+    with a tty.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Mon, 08 Mar 2010 22:31:17 +0100
+
+tcsh (6.17.00-1) experimental; urgency=low
+
+  * Adopt package. Closes: #571697
+  * New upstream release. Closes: #522071, #452219
+  * Switch to quilt from dpatch.
+  * Update patches:
+    + Refreshed:
+      - 06_man
+      - 01_build
+      - 07_nls
+      - 10_hurd
+      - 12_unknown_lscolors
+    + Merged upstream or no longer needed, dropped:
+      - 03_expand
+      - 04_termh
+      - 05_termnames
+      - 09_readinval
+      - 13_tcsh.old
+    + Need more investigation:
+      - 02_fix
+      - 08_read
+      - 11_j-prompt
+  * Bump debhelper compat level to 7
+  * Build-depend on debhelper >= 7 ; add misc:Depends
+  * Drop tcsh-kanji dummy package. Closes: #471033, #471034, #477542
+  * Switch to standard Homepage field
+  * No need to create usr/sbin
+  * Switch to dh
+  * Standards-Version bumped to 3.8.4. No additional changes needed
+  * Change menu section from Apps to Applications
+  * Add README.source
+  * Add 15_no-strip.patch: do not strip binaries
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Tue, 02 Mar 2010 08:55:03 +0100
+
+tcsh (6.14.00-7) unstable; urgency=low
+
+  * debian/control:
+    - Removed tcsh-i18n from Provides and Conflicts as it's only available
+      in oldstable.
+    - Conflicts & Replaces only for tcsh-kanji (<< 6.14.00-6),
+      closes: #376432.
+    - Added tcsh-kanji to Provides to ensure clean transition.
+
+ -- Franz Pletz <fpletz@franz-pletz.org>  Mon,  3 Jul 2006 01:32:29 +0200
+
+tcsh (6.14.00-6) unstable; urgency=low
+
+  * Converted to debhelper and introduced dpatch.
+  * Reintroduced tcsh-kanji transitional package so that previous users of
+    tcsh-kanji upgrade to tcsh smoothly, closes: #367378.
+  * debian/control: Added homepage to Description.
+
+ -- Franz Pletz <fpletz@franz-pletz.org>  Fri, 19 May 2006 14:42:19 +0200
+
+tcsh (6.14.00-5) unstable; urgency=low
+
+  * Added patches from http://bugs.gw.com/:
+    - 327503.diff: Solves %j in $prompt issue, see #21, closes: #327503.
+    - 03_expand.diff: Makes symlink=expand work on all paths, see #12.
+    - 04_termh.diff: Fixes terminal resizing, see #8.
+    - 05_termnames.diff: Fixes inconsistency between termcap and terminfo
+      names, see #7.
+    - 08_read.diff: Makes $< stop at EOL, see #24.
+    - 09_readinval.diff: Fixes invalid character handling for $<, see #25.
+  * New maintainer, closes: #347446.
+  * Modularized csh.login, closes: #351652.
+  * Updated debian/watch.
+  * Completely removed tcsh-kanji packgage.
+  * Bumped Standards-Version to 3.7.2, no further changes necessary.
+
+ -- Franz Pletz <fpletz@franz-pletz.org>  Thu, 11 May 2006 20:16:00 +0200
+
+tcsh (6.14.00-4) experimental; urgency=low
+
+  * Obsoleted tcsh-kanji package. tcsh-kanji users will upgrade to
+    tcsh automatically. The tcsh package now includes kanji support.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 16 Apr 2006 16:26:00 +0200
+
+tcsh (6.14.00-3) unstable; urgency=low
+
+  * Changed config_f.h to upstream default, going to obsolte tcsh-kanji.
+  * Applied hurd patch, closes: #322148. Thanks to Yury Semenov.
+  * Made use of add-shell and remove-shell, closes: #361548.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sat, 15 Apr 2006 20:27:15 +0200
+
+tcsh (6.14.00-2) unstable; urgency=low
+
+  * Don't die on unknown LS_COLORS values, closes: #339034.
+  * Updated standards version, fixed debian/rules.
+
+ -- Martin A. Godisch <godisch@debian.org>  Wed, 30 Nov 2005 18:36:20 +0100
+
+tcsh (6.14.00-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Martin A. Godisch <godisch@debian.org>  Fri, 25 Mar 2005 21:35:45 +0100
+
+tcsh (6.13.07-2) unstable; urgency=low
+
+  * Fixed xprintf args, closes: #291972.
+
+ -- Martin A. Godisch <godisch@debian.org>  Mon, 31 Jan 2005 18:04:10 +0100
+
+tcsh (6.13.07-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Martin A. Godisch <godisch@debian.org>  Fri, 21 Jan 2005 15:52:25 +0100
+
+tcsh (6.13.04-3) unstable; urgency=low
+
+  * Run autoconf2.50, closes: #266640.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 02 Jan 2005 17:48:35 +0100
+
+tcsh (6.13.04-2) unstable; urgency=low
+
+  * Fixed history command, closes: #283291. Thanks to Alex Romosan.
+  * Added Neil W. Van Dyke's tcsh completions, closes: #283801.
+  * Compiled tcsh binary package with kanji support. If nobody complains,
+    tcsh-kanji will be replaced with tcsh in the future. Closes: #275128.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sat, 01 Jan 2005 20:09:20 +0100
+
+tcsh (6.13.04-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated build patches, closes: #266640. Thanks to Robert Millan.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 21 Nov 2004 09:45:45 +0100
+
+tcsh (6.13.01-4) unstable; urgency=low
+
+  * Fixed DSPMBYTE issues, closes: #261616, #261633.
+    Thanks to upstream maintainer Christos Zoulas.
+
+ -- Martin A. Godisch <godisch@debian.org>  Wed, 28 Jul 2004 16:47:42 +0200
+
+tcsh (6.13.01-3) unstable; urgency=low
+
+  * Fixed NLS abortion once more, closes: #261417.
+
+ -- Martin A. Godisch <godisch@debian.org>  Mon, 26 Jul 2004 19:51:58 +0200
+
+tcsh (6.13.01-2) unstable; urgency=low
+
+  * Fixed NLS abortion, closes: #261417.
+  * Added watch file.
+
+ -- Martin A. Godisch <godisch@debian.org>  Mon, 26 Jul 2004 17:43:40 +0200
+
+tcsh (6.13.01-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed POSIX compliance of debian/rules.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 25 Jul 2004 07:28:24 +0200
+
+tcsh (6.13.00-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Martin A. Godisch <godisch@debian.org>  Wed, 19 May 2004 20:06:36 +0200
+
+tcsh (6.12.03-1) unstable; urgency=low
+
+  * New upstream release.
+  * Installed Fixes as changelog.gz.
+
+ -- Martin A. Godisch <godisch@debian.org>  Wed, 24 Mar 2004 16:37:55 +0100
+
+tcsh (6.12.02-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 22 Feb 2004 16:40:35 +0100
+
+tcsh (6.12.00-10) unstable; urgency=low
+
+  * Updated completions, closes: #223800.
+
+ -- Martin A. Godisch <godisch@debian.org>  Fri, 12 Dec 2003 19:22:35 +0100
+
+tcsh (6.12.00-9) unstable; urgency=low
+
+  * Updated completions, closes: #221600.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 23 Nov 2003 12:17:10 +0100
+
+tcsh (6.12.00-8) unstable; urgency=low
+
+  * Applied completion patch for $hosts and ssh, thanks to Jayen Ashar,
+    moved completion file to /etc/complete.tcsh, closes: #214302.
+  * Completion file cleanup and upstream resynchronization.
+  * Updated standards version.
+
+ -- Martin A. Godisch <godisch@debian.org>  Wed, 08 Oct 2003 20:33:10 +0200
+
+tcsh (6.12.00-7) unstable; urgency=low
+
+  * Added ja_JP.eucJP patch for tcsh-kanji, closes: #210865,
+    thanks to Suehiro-san, NAKANO Takeo.
+  * Updated package description.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sun, 14 Sep 2003 18:30:16 +0200
+
+tcsh (6.12.00-6) unstable; urgency=low
+
+  * Fixed ignoreeof, closes: #203945.
+
+ -- Martin A. Godisch <godisch@debian.org>  Tue, 05 Aug 2003 17:00:24 +0200
+
+tcsh (6.12.00-5) unstable; urgency=low
+
+  * Updated patch for bug #191708, thanks to Pixel and Christos Zoulas.
+  * Added patch to build-dependencies.
+  * Removed C locale files.
+  * Updated package description.
+  * Updated standards version.
+  * Thanks to Matej Vela for co-maintaining.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sat, 02 Aug 2003 08:31:25 +0200
+
+tcsh (6.12.00-4) unstable; urgency=low
+
+  * Fixed debian/rules in case that the build target is not run as root.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sat, 24 May 2003 21:13:10 +0200
+
+tcsh (6.12.00-3) unstable; urgency=low
+
+  * Fixed cmd parsing for correct = cmd, closes: #75974.
+  * Added source command argument expansion, closes: #78380.
+  * Added manual note for "unlimit descriptors", closes: #142367.
+
+ -- Martin A. Godisch <godisch@debian.org>  Sat, 24 May 2003 18:09:40 +0200
+
+tcsh (6.12.00-2) unstable; urgency=low
+
+  * Fixed compiler warning on alpha and ia64, thanks to Adam Lackorzynski.
+  * Fixed nostrip and substvars handling.
+  * Added csh-mode.el for Emacs.
+  * Updated package description.
+  * Added priority for the source package.
+
+ -- Martin A. Godisch <godisch@debian.org>  Fri, 23 May 2003 16:27:05 +0200
+
+tcsh (6.12.00-1) unstable; urgency=low
+
+  * New maintainer, closes: #194033,
+  * Closing NMUs, closes: #93246, #132111, #139758, #63087, #80417, #137178.
+  * New upstream release, closes: #40584, #67138, #187970, #138429, #189313;
+    removed several patches which are now in the upstream source.
+  * Merged binary package tcsh-i18n into tcsh and tcsh-kanji. The tcsh-i18n
+    binary package was only 98 KB big, ftp-masters: please remove tcsh-i18n.
+  * Updated default config files, closes: #108177, #155974.
+  * Updated completion examples,  closes: #185597, #191218.
+  * Applied Chinese input patch,  closes: #191708.
+  * Fixed wording in manual page, closes: #76604.
+  * Fixed typo in French l10n,    closes: #175750.
+  * Removed dependency on debhelper, added dependency on autotools-dev.
+  * Removed glob.3 manual page which is also in package manpages-dev.
+  * Removed skeleton files, added csh.whynot to /usr/share/doc/tcsh/.
+  * debian/ cleanup, closes: #183971.
+
+ -- Martin A. Godisch <godisch@debian.org>  Wed, 21 May 2003 11:14:30 +0200
+
+tcsh (6.11.00-2.2) unstable; urgency=low
+
+  * NMU.
+  * When invoked as csh, default to bsd echo.  Closes: #63087.
+  * Language code for Greek is "el".  Closes: #80417.
+  * Fix typo in postinst.  Closes: #137178.
+
+ -- Matej Vela <vela@debian.org>  Tue,  9 Jul 2002 16:18:55 +0200
+
+tcsh (6.11.00-2.1) unstable; urgency=low
+
+  * NMU.
+  * Hand-apply patch to fix build on MIPS.  (Closes: #139758)
+
+ -- Chris Lawrence <lawrencc@debian.org>  Tue,  2 Apr 2002 04:56:42 -0600
+
+tcsh (6.11.00-2) unstable; urgency=low
+
+  * Added the new config.guess and config.sub (closes: #135287)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Sat, 23 Feb 2002 12:47:22 +0000
+
+tcsh (6.11.00-1) unstable; urgency=low
+
+  * Updated new version: packaged by James Moss <moss@debian.org>
+    Thanks for this work! (closes: #111623)
+  * Thanks to all the people doing the NMUs.
+    (closes: #88372, #94727, #76555, #88370, #94214, #99593, #82972)
+  * Other NMU fixes.
+    (closes: #88574, #78483)
+  * Applied patch supplied by Fumitoshi UKAI <ukai@debian.or.jp>
+    (closes: #131692)
+  * Removed advertising clause (closes: #123832)
+  * Applied fix suggested by Nathan Scott <nathans@debian.org> for
+    large file support (closes: #117120)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Wed, 20 Feb 2002 23:01:44 +0000
+
+tcsh (6.10-0.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Make /etc/csh.* and /etc/skel/.* conffiles in tcsh-kanji as well as tcsh
+    (closes: #93246, #132111).
+  * Install glob(3tcsh) in tcsh-kanji as well as tcsh, and symlink to it
+    from globfree(3tcsh) in both (closes: #99593).
+
+ -- Colin Watson <cjwatson@debian.org>  Sat,  9 Feb 2002 13:27:44 +0000
+
+tcsh (6.10-0.2) unstable; urgency=low
+
+  * NMU
+  * Updated config.{guess,sub}
+  * Added build-depends
+
+ -- Randolph Chung <tausq@debian.org>  Sat,  7 Jul 2001 02:57:52 -0600
+
+tcsh (6.10-0.1) unstable; urgency=low
+
+  * NMU
+  * new upstream (closes: #78483)
+  * S/390 support already done upstream (closes: #88574)
+  * manpage patch (closes: #82972) (send this upstream)
+  * include time.h to build (closes: #88372)
+  * bug 76555 was fixed in 6.09.03-2 (closes: #76555)
+
+ -- Adrian Bridgett <bridgett@debian.org>  Thu, 22 Mar 2001 00:13:24 +0000
+
+tcsh (6.09.03-2.1) unstable; urgency=low
+
+  * Non-Maintainer Upload
+  * Check correct Japanese locale name (closes: #61842)
+
+ -- Tomohiro KUBOTA <kubota@debian.org>  Tue,  6 Feb 2001 22:46:27 +0900
+
+csh (6.09.03-2) unstable; urgency=low
+
+  * Fixed relative symlink to top level directory (Closes #76555)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Thu,  9 Nov 2000 00:01:45 +0000
+
+tcsh (6.09.03-1) unstable; urgency=high
+
+  * New upstream source
+  * Fixed security hole in the way temporary files are created for
+    << redirection (Fixes Bug#76364, Bug#76402)
+  * Moved the executable to /bin as per FHS
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Mon,  6 Nov 2000 22:45:24 +0000
+
+tcsh (6.09.00-9) frozen unstable; urgency=low
+
+  * Corrected the priority of the tcsh-i18n package back to optional
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Tue, 16 May 2000 20:47:33 +0100
+
+tcsh (6.09.00-8) frozen unstable; urgency=low
+
+  * /etc/csh.cshrc checks for ?$tcsh. Closes #59678
+  * Upload to fronzen. How many times will I get this wrong...
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Tue,  7 Mar 2000 23:16:22 +0000
+
+tcsh (6.09.00-7) unstable; urgency=low
+
+  * Corrected identification of pty for devpts. Closes #58985
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Tue,  7 Mar 2000 22:44:31 +0000
+
+tcsh (6.09.00-6) frozen unstable; urgency=low
+
+  * Changed condition in configure and configure.in to correct
+    erroneous alpha detection. Closes #58245
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Thu,  2 Mar 2000 23:05:34 +0000
+
+tcsh (6.09.00-5) frozen unstable; urgency=low
+
+  * Corrected definition in lnx-alpha configuration to put it in sync
+    with ix86.
+  * Reupload as the previous one only went to unstable.
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Wed, 16 Feb 2000 22:08:44 +0000
+
+tcsh (6.09.00-4) unstable; urgency=low
+
+  * Patched problem found in tcsh-kanji. Thanks to ex8k-hbn@asahi-net.or.jp
+    for the patch.
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Wed, 16 Feb 2000 21:36:23 +0000
+
+tcsh (6.09.00-3) frozen unstable; urgency=low
+
+  * Added DOOR to parseLSCOLORS Closes #57082
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Mon,  7 Feb 2000 22:05:01 +0000
+
+tcsh (6.09.00-2) frozen unstable; urgency=low
+
+  * Corrected problem with alternatives Bug#56480, Bug#53566
+  * Allows calling newgrp with no arguments. Bug#45541
+  * Miscelaneous lintian errors:
+    E: tcsh-kanji: postrm-does-not-call-updatemenus usr/lib/menu/tcsh
+    E: tcsh-kanji: incorrect-package-test tcsh /usr/lib/menu/tcsh
+    E: tcsh-kanji: FSSTND-dir-in-usr usr/doc/
+    E: tcsh: postrm-does-not-call-updatemenus usr/lib/menu/tcsh
+    E: tcsh: FSSTND-dir-in-usr usr/doc/
+    W: tcsh-i18n: postinst-does-not-set-usr-doc-link
+    W: tcsh-i18n: prerm-does-not-remove-usr-doc-link
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Sat, 29 Jan 2000 01:51:27 +0000
+
+tcsh (6.09.00-1) unstable; urgency=low
+
+  * New upstream version 
+  * Changed standards
+  * Corrected handling of /usr/doc and /usr/share/doc
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Fri, 17 Dec 1999 00:01:21 +0000
+
+tcsh (6.08.06-2) unstable; urgency=medium
+
+  * Backed out of workaround as it caused problems (Bug#52131)
+  * Implemented fix for LS_COLORS
+  * Changed /etc/csh.cshrc to check for $?TERM (Bug#41851)
+  * Closing Bug#28357 as I haven't gotten confirmation after my contact
+    that the bug still exists and I can't reproduce it
+  * Changed references to complete.tcsh in both the examples (Bug#49128) 
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Thu, 16 Dec 1999 18:13:14 +0000
+
+tcsh (6.08.06-1.1) unstable; urgency=low
+
+  * NMU
+  * Workaround for bug in LS_COLORS handling (bug#51603, bug#49531)
+
+ -- Hamish Moffatt <hamish@debian.org>  Fri,  3 Dec 1999 13:49:24 +1100
+
+tcsh (6.08.06-1) unstable; urgency=low
+
+  * New upstream version 
+  * Fixed MACH bug (Fixes Bug#32246, Bug#38201)
+  * Upstream sources include fix for Bug#30621 
+  * Upstream sources include fix for Bug#34261 
+  * Changed /etc/csh.cshrc to include umask 002 (Fixes Bug#37779)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Thu,  8 Jul 1999 20:12:57 +0100
+
+tcsh (6.08.01-3) frozen unstable; urgency=low
+
+  * Fixed bug in rules that made compression of docs fail. (Bug#28858)
+  * Split the tcsh package into two, one with and w/o KANJI support
+    (Fixes Bug#28959)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Sun, 17 Jan 1999 14:13:09 +0000
+
+tcsh (6.08.01-2.2) frozen unstable; urgency=medium
+
+  * Reupload into frozen because the distribution was changed suddenly
+    *after* the last upload so it went into the wrong one.
+
+ -- Martin Schulze <luisgh@debian.org>  Wed,  4 Nov 1998 05:59:26 +0100
+
+tcsh (6.08.01-2.1) unstable; urgency=low
+
+  * Non-maintainer release by request of maintainer
+  * Recompiled against ncurses4
+
+ -- Martin Schulze <joey@debian.org>  Sun,  1 Nov 1998 02:39:24 +0100
+
+tcsh (6.08.01-2) unstable; urgency=low
+
+  * Defined KANJI and DSPMBYTE to provide support for Japanese users
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Thu, 29 Oct 1998 11:49:53 +0000
+
+tcsh (6.08.01-1) unstable; urgency=low
+
+  * New upstream version 6.08.01 with help of 
+    Josip Rodin <jrodin@jagor.srce.hr>
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Mon, 26 Oct 1998 17:34:32 +0000
+
+tcsh (6.07.06-6) unstable; urgency=low
+
+  * Added the italian translation by Massimo Bertozzi <bertozzi@CE.UniPR.IT>
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Tue, 15 Sep 1998 11:47:18 +0100
+
+tcsh (6.07.06-5) stable unstable; urgency=high
+
+  * Plugged buffer overflow reported by Wichert Akkerman <wakkerma@debian.org>
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Tue, 15 Sep 1998 11:13:35 +0100
+
+tcsh (6.07.06-4) frozen unstable; urgency=low
+
+  * Wrapped bindkey options with a check for tcsh to avoid clashes with
+    csh. (Fixes Bug#23201)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Fri, 12 Jun 1998 12:10:19 +0100
+
+tcsh (6.07.06-3) frozen unstable; urgency=low
+
+  * Added the patch suggested by Mark Eichin as reported in the tcsh
+    mailinglist. This should hopefully solve Bug#16150. (Attempt #2)
+    I have now backed from the patch by Dennis Clark.
+  * Added patches for compilation under Alphas. (Thanks to Christopher C
+    Chimelis) Bug#21924
+  * Changed domainname to dnsdomainname in complete.tcsh. Closes Bug#22324.
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Mon, 18 May 1998 12:59:06 +0100
+
+tcsh (6.07.06-2) frozen unstable; urgency=low
+
+  * Added definition for delete-char to /etc/csh.cshrc
+    (Thanks to Branden Robinson <branden@purdue.edu>)
+    Closes Bug#21852
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Wed, 29 Apr 1998 18:05:42 +0100
+
+tcsh (6.07.06-1) frozen unstable; urgency=low
+
+  * New upstream source with the new signals (Fixes Bug#10905)
+  * Included patch from Dennis Clark <dbugger@debian.org> that solves the
+    runaway processes problem (Fixes Bug#16150 and Bug#21302)
+  * Simplified the files to /etc/skel and moved the originals to the
+    examples directory Bug#21057.
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Mon, 20 Apr 1998 12:21:32 +0100
+
+tcsh (6.07.02-7) unstable; urgency=low
+
+  * Include the new Spanish translations.
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Sun, 15 Mar 1998 17:45:05 +0000
+
+tcsh (6.07.02-6) unstable; urgency=low
+
+  * New maintainer
+  * Includes the message catalogs (Fixes #8569)
+  * Changed cwdcmd (Fixes #18114)
+
+ -- Luis Francisco Gonzalez <luisgh@debian.org>  Thu, 12 Mar 1998 17:45:21 +0000
+
+tcsh (6.07.02-5) unstable; urgency=high
+
+  * Fixed a dangerous bug in bugfix to bug #820 (tcsh builtin `echo'
+    doesn't check write errors).  Now tcsh won't enter an endless loop
+    (or, at least, it won't be my fault (hopefully)).  This bugfix is
+    accepted by Christos Zoulas, the author of tcsh.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Sun, 21 Sep 1997 21:33:58 +0200
+
+tcsh (6.07.02-4) unstable; urgency=high
+
+  * Fixed bug #12721 (mixed linkage) by re-compiling.
+
+  * Hopefully fixed bug #820 (tcsh builtin `echo' doesn't check
+    write errors) by applying patch by Juan Cespedes <cespedes@debian.org>.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Thu, 18 Sep 1997 23:43:56 +0200
+
+tcsh (6.07.02-3) unstable; urgency=low
+
+  * Added -lcrypt by adding "rm -rf config.cache config.status config.log"
+    to debian/rules clean.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Wed,  6 Aug 1997 00:49:29 +0300
+
+tcsh (6.07.02-2) unstable frozen; urgency=low
+
+  * Fixed bug #8859 (Small changes for Debian/SPARC).
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Mon, 21 Apr 1997 14:19:24 +0300
+
+tcsh (6.07.02-1) unstable frozen; urgency=high
+
+  * Upgraded upstream version.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Wed, 26 Mar 1997 01:33:20 +0300
+
+tcsh (6.06-13) unstable; urgency=low
+
+  * Moved complete.tcsh from /usr/doc/examples/tcsh to
+    /usr/doc/tcsh/examples.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Fri, 28 Feb 1997 13:25:44 +0200
+
+tcsh (6.06-12) unstable; urgency=low
+
+  * Fixed Bug #7609 (feature request for complete.tcsh file).
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Tue, 25 Feb 1997 22:38:33 +0200
+
+tcsh (6.06-11) unstable; urgency=low
+
+  * Fixed Bug #6542 (tcsh configured not to be fully 8-bit clean) by
+    upgrading libc.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Sun, 26 Jan 1997 23:05:45 +0200
+
+tcsh (6.06-10) stable; urgency=low
+
+  * Fixed Bug #6089 (tcsh upgrade leaves symlink csh.1 -> tcsh.1)
+    by adding old diversion stuff I forgot to add into postinst.
+
+  * Changed e-mail address.
+
+ -- Vadim Vygonets <vadik@cs.huji.ac.il>  Fri, 20 Dec 1996 01:11:40 +0200
+
+tcsh (6.06-9) unstable frozen; urgency=low
+
+  * Fixed Bug #5704 (tcsh install script fails) by changing prerm.
+
+ -- Vadik Vygonets <vadik@debian.org>  Sat, 7 Dec 1996 14:22:59 +0200
+
+tcsh (6.06-8) upstable frozen; urgency=low
+
+  * Fixed Bug #5582 (/etc/csh.cshrc destroys the default path).
+
+ -- Vadik Vygonets <vadik@debian.org>  Sun, 24 Nov 1996 03:19:44 +0200
+
+tcsh (6.06-7) unstable frozen; urgency=high
+
+  * Fixed Bug #4965 & Bug #5384 (tcsh executes .login before .cshrc).
+
+  * Fixed Bug #5237 (tcsh contains invalid architecture).
+
+  * Changed /etc/csh.cshrc and /etc/csh.login; added /etc/skel/.cshrc
+    and /etc/skel/.alias.
+
+ -- Vadik Vygonets <vadik@debian.org>  Sat, 16 Nov 1996 09:19:58 +0200
+
+tcsh (6.06-6) stable; urgency=medium
+
+  * fixed Bug #4746 (tcsh overwrites conffiles) by upgrading version of
+    dpkg.
+
+  * gzipped man page.
+
+  * Made tcsh understand "bye" command and rename "log" to "watchlog";
+    aliased "log" to "watchlog" (in /etc/csh.cshrc) for compatibility.
+
+ -- Vadik Vygonets <vadik@debian.org>  Fri, 1 Nov 1996 23:37:37 +0200
+
+tcsh (6.06-5) stable; urgency=high
+
+  * couldn't fix Bug #4746 (tcsh overwrites conffiles), worked around it.
+
+ -- Vadik Vygonets <vadik@debian.org>  Sat, 12 Oct 1996 11:58:44 +0200
+
+tcsh (6.06-4) stable; urgency=high
+
+  * in config_f.h, defined NLS_CATALOGS, LOGIN_FIRST, NODOT,
+    undefined DOTLAST.
+
+  * in config/linux: defined VFORK.
+
+  * in host.defs: defined VENDOR to unknown, HOSTTYPE to i386-linux
+    and MACHTYPE to i386 even if compiled on i486 or higher machine.
+
+  * in pathnames.h: returned the original default definition of
+    _PATH_TCSHELL to "/usr/local/bin/tcsh", but made it
+    "/usr/bin/tcsh" under linux; linked /bin/tcsh to /usr/bin/tcsh.
+
+  * tcsh now provides c-shell.
+
+  * tcsh now uses update-alternatives.
+
+  * Upgraded the package to meet last dpkg standards (2.1.1.0).
+
+  * Taken over package from Andrew Howell.
+
+ -- Vadik Vygonets <vadik@debian.org>  Wed, 10 Oct 1996 02:28:10 +0200
+
+tcsh (6.06-3);
+
+  * Compiled with ncurses shared library.
+  * Removed PACKAGE_REVISION.
+  * Removed -m486 compiler option.
+  * Defined SYSMALLOC so tcsh has no problems with libc > 5.3.2.
+  * Fixed Bug#2155 and #2230: tcsh - aborts if unknown TERM at login.
+ -- 960308
+
+tcsh (6.06-2);
+
+  * Converted to ELF.
+ -- 951123
+
+tcsh (6.06-1);
+
+  * Upgraded to latest version.
+  * Taken over package from Ian Murdoch
+ -- 950928 Andrew Howell <andrew@it.com.au>
+
+tcsh (6.05-4);
+  * added Debian GNU/Linux package maintenance system files
+  * applied patches to fix resolver lookup hangs (from Bruce Perens)
+
+
