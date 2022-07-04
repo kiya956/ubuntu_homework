@@ -1,3 +1,9 @@
+tcsh (6.20.00-7ubuntu4) focal; urgency=medium
+
+  * for 20.04
+
+ -- ChunAn <kiya956_3@hotmail.com>  Mon, 04 Jul 2022 17:01:37 +0800
+
 tcsh (6.20.00-7ubuntu2) bionic; urgency=medium
 
   * for release
