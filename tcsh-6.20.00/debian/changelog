@@ -1,3 +1,9 @@
+tcsh (6.20.00-7ubuntu1) trusty; urgency=medium
+
+  * first homework
+
+ -- ChunAn <kiya956_3@hotmail.com>  Mon, 04 Jul 2022 10:23:45 +0800
+
 tcsh (6.20.00-7) unstable; urgency=high
 
   * postrm: remove symlink, not executable, Closes: #852117
